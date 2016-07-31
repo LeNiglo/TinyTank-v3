@@ -1,0 +1,17 @@
+#ifndef _CONFIG_H_
+# define _CONFIG_H_
+
+# define VERSION_MAJOR @TINYTANK_VERSION_MAJOR@
+# define VERSION_MINOR @TINYTANK_VERSION_MINOR@
+
+# ifdef WIN32
+#  include <conio.h>
+# endif
+
+# include <string>
+# include <iostream>
+# include <vector>
+
+# include <cstdlib>
+
+#endif /* _CONFIG_H_ */
