@@ -1,8 +1,8 @@
 #ifndef ADRAWABLE_HPP_
-#define ADRAWABLE_HPP_
+# define ADRAWABLE_HPP_
 
 # include <SFML/Graphics.hpp>
-// # include "Input.hpp"
+# include "Input.hpp"
 
 class ADrawable
 {
@@ -10,7 +10,7 @@ public:
   ADrawable(bool hide, const sf::Vector2f &pos, const sf::Vector2f &size) : _hide(hide), _pos(pos), _size(size) { };
   virtual ~ADrawable() { };
 
-  virtual void update(/*const Input &, */float) = 0;
+  virtual void update(const Input &, float) = 0;
   virtual void draw(sf::RenderWindow &win) = 0;
 
   void  setHide(bool hide)

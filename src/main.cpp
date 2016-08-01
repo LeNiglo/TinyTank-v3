@@ -1,9 +1,12 @@
 #include "config.h"
-#include "ScreenManager.hpp"
+#include "GameManager.hpp"
 
-int main(int argc, char const *argv[]) {
+int main(int argc, char const *argv[])
+{
+	std::cout << "TinyTank V" << VERSION_MAJOR << "." << VERSION_MINOR << std::endl;
 
-	std::cout << "TinyTank v" << VERSION_MAJOR << "." << VERSION_MINOR << std::endl;
+	GameManager manager;
 
-	return 0;
+	manager.init();
+	return manager.loop();
 }

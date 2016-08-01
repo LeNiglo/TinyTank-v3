@@ -20,7 +20,7 @@ void MenuScreen::render()
 
 }
 
-bool MenuScreen::eventPoll(const sf::Event &event, ScreenManager *manager)
+bool MenuScreen::eventPoll(const sf::Event &event, GameManager *manager)
 {
 	return true;
 }
