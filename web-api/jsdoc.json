@@ -1,0 +1,17 @@
+{
+	"debug": true,
+	"nodePath": "",
+	"docsPath": "../documentation-web-api",
+	"meteorPort": 3333,
+	"initMeteor": false,
+	"updateMeteor": true,
+	"preamble": true,
+	"projectRepo": "https://github.com/LeNiglo/TinyTank-v3/tree/master/web-api",
+	"docsConfig": {
+		"title": "TinyTank Website & API Documentation",
+		"metas": {
+			"author": "LeNiglo",
+			"description": "Documentation for TinyTank's Meteor Application."
+		}
+	}
+}

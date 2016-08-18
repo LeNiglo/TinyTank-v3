@@ -1,0 +1,55 @@
+<template name="home">
+	<h1>Tiny Tank Official</h1>
+
+	{{#if loggingIn}}
+	<div class="row">
+		<div class="col-xs-12 text-center">
+			<p>Logging In ...</p>
+		</div>
+	</div>
+	{{else}}
+	{{#if currentUser}}
+	<div class="row">
+		<div class="col-xs-12 text-center">
+			{{> logout}}
+		</div>
+	</div>
+	{{else}}
+	<div class="row">
+		<div class="col-xs-6">
+			{{> register}}
+		</div>
+		<div class="col-xs-6">
+			{{> login}}
+		</div>
+	</div>
+	{{/if}}
+	{{/if}}
+
+	<div class="row">
+		<div class="col-xs-12">
+			<h3>Users</h3>
+			{{#each users}}
+			<p>{{username}}</p>
+			{{/each}}
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-xs-12">
+			<h3>Servers</h3>
+			{{#each servers}}
+			<p>[{{fromNow lastActive}}] {{name}} (@ {{ip}}:{{ports.udp}}/{{ports.tcp}})</p>
+			{{/each}}
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-xs-12">
+			<h3>Matches</h3>
+			{{#each matches}}
+			<p>[{{fromNow createdAt}}] {{name}}</p>
+			{{/each}}
+		</div>
+	</div>
+</template>

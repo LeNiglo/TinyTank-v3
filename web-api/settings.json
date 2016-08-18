@@ -1,0 +1,12 @@
+{
+	"public": {
+		"ga": {
+			"account": "UA-67560863-4",
+			"debug": true
+		}
+	},
+	"kadira": {
+		"appId": "zYbovDEPE6GtpjoqH",
+		"appSecret": "fda12b2e-e25f-458e-b899-abdcce281b8b"
+	}
+}
