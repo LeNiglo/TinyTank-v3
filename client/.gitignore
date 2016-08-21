@@ -38,6 +38,3 @@ install_manifest.txt
 *.blg
 *.synctex.gz
 *.toc
-
-build-*/*
-!build-*/.gitkeep

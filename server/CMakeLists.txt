@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0)
-set(PROJECT_NAME "TinyTank")
+set(PROJECT_NAME "TinyServ")
 project(${PROJECT_NAME})
 
 # Enable debug symbols by default
@@ -16,8 +16,8 @@ else()
     message( FATAL_ERROR "Target system is unknown! In that case YOU have to specify -DPREFIX=<path>" )
 endif()
 
-set(TINYTANK_VERSION_MAJOR 3)
-set(TINYTANK_VERSION_MINOR 0)
+set(TINYSERV_VERSION_MAJOR 1)
+set(TINYSERV_VERSION_MINOR 0)
 configure_file(
 	"${PROJECT_SOURCE_DIR}/inc/config.h.in"
 	"${PROJECT_BINARY_DIR}/config.h"
@@ -34,19 +34,13 @@ add_executable(${PROJECT_NAME} ${ALL_SRCS} ${ALL_HEADERS})
 set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 11)
 set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD_REQUIRED ON)
 
-if (CMAKE_GENERATOR STREQUAL Xcode OR MSVC)
-	file(COPY "${PROJECT_SOURCE_DIR}/resources" DESTINATION "${PROJECT_BINARY_DIR}/Debug/.")
-	file(COPY "${PROJECT_SOURCE_DIR}/resources" DESTINATION "${PROJECT_BINARY_DIR}/Release/.")
-	file(COPY "${PROJECT_SOURCE_DIR}/resources" DESTINATION "${PROJECT_BINARY_DIR}/.")
-else ()
-	file(COPY "${PROJECT_SOURCE_DIR}/resources" DESTINATION ${PROJECT_BINARY_DIR})
-endif ()
 
 # Detect and add SFML
+message(DEBUG "${CMAKE_SOURCE_DIR}/cmake_modules")
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
 #Find any version 2.X of SFML
 #See the FindSFML.cmake file for additional details and instructions
-find_package(SFML 2 REQUIRED system window graphics network audio)
+find_package(SFML 2 REQUIRED network)
 if (SFML_FOUND)
 	include_directories(${SFML_INCLUDE_DIR})
 	target_link_libraries(${PROJECT_NAME} ${SFML_LIBRARIES})

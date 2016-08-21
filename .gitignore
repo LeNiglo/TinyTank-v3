@@ -1,1 +1,5 @@
 documentation-web-api/*
+!documentation-web-api/.gitkeep
+
+build-*/*
+!build-*/.gitkeep
