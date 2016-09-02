@@ -1,0 +1,17 @@
+<template name="infoNbUsers">
+	<p>{{ getNbUsers }} registered users.</p>
+</template>
+
+<template name="infoLastUser">
+	{{#with getLastUser }}
+	{{#if _id}}
+	<p>Greetings to <a href="{{ pathFor 'profile' _id}}">{{ username }}</a>. Joined us {{ fromNow createdAt }}</p>
+	{{/if}}
+	{{/with}}
+</template>
+
+<template name="infos">
+	<p class="lead">Join our growing army !</p>
+	{{> infoNbUsers }}
+	{{> infoLastUser }}
+</template>

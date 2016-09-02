@@ -1,0 +1,41 @@
+<template name="profile">
+	<div id="home" class="container">
+		<section style="padding-top:10px;">
+			<h2 class="text-center">{{username}}</h2>
+
+			<p>
+				Registered {{ fromNow createdAt }} from <i class="flag-icon flag-icon-{{profile.country}} flag-icon-squared"></i>
+			</p>
+
+			<p>Last seen {{ fromNow updatedAt }}</p>
+		</section>
+
+		<section id="stats">
+			<table class="table">
+				<tbody>
+					<tr>
+						<th>Kills</th>
+						<td>{{ stats.kills }} ({{ stats.killsPG }}/g)</td>
+					</tr>
+					<tr>
+						<th>Deaths</th>
+						<td>{{ stats.deaths }} ({{ stats.deathsPG }}/g)</td>
+					</tr>
+					<tr>
+						<th>Score</th>
+						<td>{{ stats.score }} ({{ stats.scorePG }}/g)</td>
+					</tr>
+					<tr>
+						<th>Accuracy</th>
+						<td>{{ getAccuracy stats }} %</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+
+		<section id="tanks">
+
+		</section>
+
+	</div>
+</template>

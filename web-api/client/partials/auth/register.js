@@ -9,12 +9,18 @@ Template.register.events({
 			profile: {
 				firstname: e.currentTarget.firstname.value,
 				lastname: e.currentTarget.lastname.value,
+				country: e.currentTarget.country.value
 			}
 		};
 
-		Accounts.createUser(user, (error) => {
-			if (error) console.error(error);
-			else console.log(user);
+		Meteor.call('create_user', user, (error, result) => {
+			if (error) FlashMessages.sendError(error.reason);
+			else {
+				FlashMessages.sendInfo("Registered");
+				Router.go('profile', {_username: result});
+				Meteor.loginWithPassword(user.username, user.password);
+			}
 		});
+		return false;
 	}
 });

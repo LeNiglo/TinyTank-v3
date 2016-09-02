@@ -1,4 +1,5 @@
 import { Meteor } from 'meteor/meteor';
+import { check } from 'meteor/check';
 
 /**
 * @summary Creates a new Server
@@ -9,11 +10,13 @@ import { Meteor } from 'meteor/meteor';
 * @return {ObjectID} serverId null: error, _id: newly created serverId
 */
 Meteor.method('init_server', (server) => {
-	Servers.insert(server, (error, _id) => {
-		if (error) log.error(error);
-		else log.info("Created new server " + _id + ".");
-		return error ? null : _id;
-	});
+	if (this.userId) {
+		var _id = Servers.insert(server);
+		log.info("Created new server " + _id + ".");
+		return _id;
+	} else {
+		log.error('User must be logged to init a server.');
+	}
 }, {
 	url: '/api/server/init_server',
 	getArgsFromRequest: (request) => {
@@ -26,7 +29,7 @@ Meteor.method('init_server', (server) => {
 			},
 			map: request.body.map
 		};
-
+		this.userId = request.userId;
 		return [obj];
 	},
 	httpMethod: 'POST'
@@ -41,14 +44,17 @@ Meteor.method('init_server', (server) => {
 * @return {Integer} count 0: error, 1: success
 */
 Meteor.method('stop_server', (serverId) => {
-	log.debug("Stopping server " + serverId + ".");
-	Servers.remove({_id: serverId}, (error) => {
-		if (error) log.error(error);
-		return error ? false : true;
-	});
+	if (this.userId) {
+		check(serverId, String);
+		log.debug("Stopping server " + serverId + ".");
+		return Servers.remove({_id: serverId});
+	} else {
+		log.error('User must be logged to stop a server.');
+	}
 }, {
 	url: '/api/server/stop_server',
 	getArgsFromRequest: (request) => {
+		this.userId = request.userId;
 		return [request.body.serverId];
 	},
 	httpMethod: 'POST'
@@ -63,14 +69,17 @@ Meteor.method('stop_server', (serverId) => {
 * @return {Integer} count 0: error, 1: success
 */
 Meteor.method('update_server', (serverId) => {
-	log.debug("Updating server " + serverId + " lastActive.");
-	Servers.update({_id: serverId}, {$set: {lastActive: Date.now()}}, {}, (error, count) => {
-		if (error) log.error(error);
-		return error ? 0 : count;
-	});
+	if (this.userId) {
+		check(serverId, String);
+		log.debug("Updating server " + serverId + " lastActive.");
+		return Servers.update({_id: serverId}, {$set: {lastActive: new Date()}});
+	} else {
+		log.error('User must be logged to update a server.');
+	}
 }, {
 	url: '/api/server/update_server',
 	getArgsFromRequest: (request) => {
+		this.userId = request.userId;
 		return [request.body.serverId];
 	},
 	httpMethod: 'POST'
@@ -86,15 +95,18 @@ Meteor.method('update_server', (serverId) => {
 * @return {Integer} count 0: error, 1: success
 */
 Meteor.method('add_user', (serverId, username) => {
-	if (!username) return 0;
-	log.debug("Adding " + username + " to server " + serverId + ".");
-	Servers.update({_id: serverId}, {$push: {users: username}}, {}, (error, count) => {
-		if (error) log.error(error);
-		return error ? 0 : count;
-	});
+	if (this.userId) {
+		check(serverId, String);
+		check(username, String);
+		log.debug("Adding " + username + " to server " + serverId + ".");
+		return Servers.update({_id: serverId}, {$push: {users: username}});
+	} else {
+		log.error('User must be logged to update a server.');
+	}
 }, {
 	url: '/api/server/add_user',
 	getArgsFromRequest: (request) => {
+		this.userId = request.userId;
 		return [request.body.serverId, request.body.username];
 	},
 	httpMethod: 'POST'
@@ -110,15 +122,18 @@ Meteor.method('add_user', (serverId, username) => {
 * @return {Integer} count 0: error, 1: success
 */
 Meteor.method('remove_user', (serverId, username) => {
-	if (!username) return 0;
-	log.debug("Removing " + username + " from server " + serverId + ".");
-	Servers.update({_id: serverId}, {$pull: {users: username}}, {}, (error, count) => {
-		if (error) log.error(error);
-		return error ? 0 : count;
-	});
+	if (this.userId) {
+		check(serverId, String);
+		check(username, String);
+		log.debug("Removing " + username + " from server " + serverId + ".");
+		return Servers.update({_id: serverId}, {$pull: {users: username}});
+	} else {
+		log.error('User must be logged to update a server.');
+	}
 }, {
 	url: '/api/server/remove_user',
 	getArgsFromRequest: (request) => {
+		this.userId = request.userId;
 		return [request.body.serverId, request.body.username];
 	},
 	httpMethod: 'POST'

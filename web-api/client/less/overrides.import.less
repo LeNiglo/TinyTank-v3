@@ -1,0 +1,43 @@
+#iron-router-progress {
+	background-color: @primary;
+	box-shadow: 0 0 5px @primary;
+	z-index: 999;
+}
+
+#iron-router-progress.spinner:before {
+	border-color: @primary;
+}
+
+.btn-default {
+	background-color: @dark !important;
+	border-color: lighten(@dark, 10%) !important;
+
+	&:hover,
+	&:active,
+	&:focus {
+		background-color: lighten(@dark, 10%) !important;
+	}
+}
+
+.btn-primary {
+	background-color: @primary !important;
+	border-color: darken(@primary, 10%) !important;
+
+	&:hover,
+	&:active,
+	&:focus {
+		background-color: darken(@primary, 10%) !important;
+	}
+}
+
+.btn-success,
+.btn-info, {
+	background-color: @secondary !important;
+	border-color: darken(@secondary, 10%) !important;
+
+	&:hover,
+	&:active,
+	&:focus {
+		background-color: darken(@secondary, 10%) !important;
+	}
+}

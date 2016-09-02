@@ -1,16 +1,27 @@
 <template name="login">
-	<form class="" id="login-form">
-		<legend>Login</legend>
-		<div class="form-group">
-			<label for="username">Username or Email</label>
-			<input type="text" class="form-control" id="username" name="username" placeholder="Username or Email" />
-		</div>
-		<div class="form-group">
-			<label for="password">Password</label>
-			<input type="password" class="form-control" id="password" name="password" placeholder="Password" />
-		</div>
-		<p class="text-center">
-			<input type="submit" class="btn btn-default" value="Login" />
-		</p>
-	</form>
+	<div class="col-md-6 col-md-offset-3 text-center">
+		<form class="" id="login-form">
+			<legend>Login</legend>
+			<fieldset>
+				<div class="form-group">
+					<label for="username">Username or Email</label>
+					<input type="text" class="form-control" id="username" name="username" placeholder="Username or Email" required />
+				</div>
+				<div class="form-group">
+					<label for="password">Password</label>
+					<input type="password" class="form-control" id="password" name="password" placeholder="Password" required />
+					<small class="text-right"><a href="{{ pathFor 'forgot-password' }}">Forgot password ?</a></small>
+				</div>
+			</fieldset>
+			<hr />
+			<div class="form-group row text-center">
+				<div class="col-md-6">
+					<input type="submit" class="btn btn-success form-control" value="Login" />
+				</div>
+				<div class="col-md-6">
+					<a href="{{ pathFor 'register' }}" class="btn btn-default form-control">Register</a>
+				</div>
+			</div>
+		</form>
+	</div>
 </template>

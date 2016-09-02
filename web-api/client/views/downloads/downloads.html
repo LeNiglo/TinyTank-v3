@@ -1,0 +1,63 @@
+<template name="downloads">
+	<div id="home" class="container text-center">
+
+		<h1 class="page-header">Download TinyTank Now !</h1>
+
+		<section>
+			<div class="row">
+				<div class="col-md-6">
+					<div id="form-download">
+
+						<div class="row">
+							<div class="col-xs-4">
+								<a href="/downloads/TinyTank_windows.zip" download="TinyTank.zip" class="sys-logo" data-sys="windows" target="_blank">
+									<i class="fa fa-windows" aria-hidden="true"></i>
+								</a>
+							</div>
+							<div class="col-xs-4">
+								<a href="/downloads/TinyTank_osx.zip" download="TinyTank.zip" class="sys-logo" data-sys="osx" target="_blank">
+									<i class="fa fa-apple" aria-hidden="true"></i>
+								</a>
+							</div>
+							<div class="col-xs-4">
+								<a href="/downloads/TinyTank_linux.zip" download="TinyTank.zip" class="sys-logo" data-sys="linux" target="_blank">
+									<i class="fa fa-6 fa-linux" aria-hidden="true"></i>
+								</a>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<div class="col-md-6">
+					{{#if currentUser}}
+					<a class="btn-download btn btn-default form-control" href="{{ pathFor 'ladder' }}">
+						<i class="fa fa-table"></i>&nbsp;&nbsp;&nbsp;Check the Ladder !
+					</a>
+					{{else}}
+					<a class="btn-download btn btn-default form-control" href="{{ pathFor 'register' }}">
+						<i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp;Create an account !
+					</a>
+					{{/if}}
+				</div>
+			</div>
+		</section>
+
+		<section>
+			<div class="jumbotron text-left">
+
+				<h1>TinyTank</h1>
+				<p>Compete with other people and enjoy your free game !</p>
+
+				<hr />
+
+				<p class="lead">Cross Platform</p>
+				<p>It works on Windows, OS X and Linux.</p>
+
+				<p class="lead">Easy to setup</p>
+				<p>No installation required, just download and launch the executable.</p>
+
+			</div>
+		</section>
+
+	</div>
+</template>

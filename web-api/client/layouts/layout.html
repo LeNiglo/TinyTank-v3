@@ -1,0 +1,22 @@
+<template name="layout">
+	{{> header affix="0" }}
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				{{> flashMessages}}
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				{{> yield}}
+			</div>
+		</div>
+	</div>
+
+	{{> footer}}
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/latest/js/bootstrap.min.js"></script>
+</template>

@@ -1,32 +1,63 @@
 <template name="register">
-	<form class="" id="register-form">
-		<legend>Register</legend>
-		<div class="form-group">
-			<label for="username">Username</label>
-			<input type="text" class="form-control" id="username" name="username" placeholder="Username" />
-		</div>
-		<div class="form-group">
-			<label for="email">Email</label>
-			<input type="text" class="form-control" id="email" name="email" placeholder="Email" />
-		</div>
-		<div class="form-group">
-			<label for="firstname">Firstname</label>
-			<input type="text" class="form-control" id="firstname" name="firstname" placeholder="Firstname" />
-		</div>
-		<div class="form-group">
-			<label for="lastname">Lastname</label>
-			<input type="text" class="form-control" id="lastname" name="lastname" placeholder="Lastname" />
-		</div>
-		<div class="form-group">
-			<label for="password">Password</label>
-			<input type="password" class="form-control" id="password" name="password" placeholder="Password" />
-		</div>
-		<div class="form-group">
-			<label for="password2">Confirmation</label>
-			<input type="password" class="form-control" id="password2" name="password2" placeholder="Password" />
-		</div>
-		<p class="text-center">
-			<input type="submit" class="btn btn-default" value="Register" />
-		</p>
-	</form>
+	<div class="col-md-6 col-md-offset-3 text-center">
+		<form class="" id="register-form">
+			<legend>Register</legend>
+			<fieldset>
+				<div class="form-group">
+					<label for="username">Username</label>
+					<input type="text" class="form-control" id="username" name="username" placeholder="Username" required />
+				</div>
+				<div class="form-group">
+					<label for="email">Email</label>
+					<input type="text" class="form-control" id="email" name="email" placeholder="Email" required />
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-md-6">
+						<div class="form-group">
+							<label for="password">Password</label>
+							<input type="password" class="form-control" id="password" name="password" placeholder="Password" required />
+						</div>
+					</div>
+					<div class="col-xs-12 col-md-6">
+						<div class="form-group">
+							<label for="password2">Confirmation</label>
+							<input type="password" class="form-control" id="password2" name="password2" placeholder="Password" required />
+						</div>
+					</div>
+				</div>
+			</fieldset>
+			<hr />
+			<fieldset>
+				<div class="row">
+					<div class="col-xs-12 col-md-6">
+						<div class="form-group">
+							<label for="firstname">Firstname</label>
+							<input type="text" class="form-control" id="firstname" name="firstname" placeholder="Firstname" required />
+						</div>
+					</div>
+					<div class="col-xs-12 col-md-6">
+						<div class="form-group">
+							<label for="lastname">Lastname</label>
+							<input type="text" class="form-control" id="lastname" name="lastname" placeholder="Lastname" required />
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="country">Country</label>
+					<select id="country" name="country" class="form-control" required>
+						{{#each getCountries}}
+						<option value="{{code}}">{{name}}</option>
+						{{/each}}
+					</select>
+				</div>
+			</fieldset>
+			<hr />
+			<p class="text-center">
+				<input type="submit" class="btn btn-success form-control" value="Register" />
+			</p>
+			<p class="text-center">
+				<a href="{{ pathFor 'login' }}">Already an account ?</a>
+			</p>
+		</form>
+	</div>
 </template>

@@ -1,55 +1,59 @@
 <template name="home">
-	<h1>Tiny Tank Official</h1>
 
-	{{#if loggingIn}}
-	<div class="row">
-		<div class="col-xs-12 text-center">
-			<p>Logging In ...</p>
+	<div id="home">
+		<div class="row">
+			<div class="col-xs-12">
+				<h1 class="text-primary text-center"><span id="tinyHomeMessage" style="color:#f15841;">Have Fun</span>, on Tiny Tank.</h1>
+			</div>
 		</div>
-	</div>
-	{{else}}
-	{{#if currentUser}}
-	<div class="row">
-		<div class="col-xs-12 text-center">
-			{{> logout}}
-		</div>
-	</div>
-	{{else}}
-	<div class="row">
-		<div class="col-xs-6">
-			{{> register}}
-		</div>
-		<div class="col-xs-6">
-			{{> login}}
-		</div>
-	</div>
-	{{/if}}
-	{{/if}}
 
-	<div class="row">
-		<div class="col-xs-12">
-			<h3>Users</h3>
-			{{#each users}}
-			<p>{{username}}</p>
-			{{/each}}
-		</div>
-	</div>
+		<section>
+			{{!-- Full width picture / background image --}}
+			{{!-- <img src="/img/section-banner-test.png" class="img-responsive" /> --}}
 
-	<div class="row">
-		<div class="col-xs-12">
-			<h3>Servers</h3>
-			{{#each servers}}
-			<p>[{{fromNow lastActive}}] {{name}} (@ {{ip}}:{{ports.udp}}/{{ports.tcp}})</p>
-			{{/each}}
-		</div>
-	</div>
+			<div class="container text-center">
+				<h2 class="page-header">Fun Comes First</h2>
 
-	<div class="row">
-		<div class="col-xs-12">
-			<h3>Matches</h3>
-			{{#each matches}}
-			<p>[{{fromNow createdAt}}] {{name}}</p>
-			{{/each}}
-		</div>
+				<p>Our cute little tanks will make you enjoy every moment of gaming.</p>
+				<p class="lead">Play in a lot of mods :</p>
+				<ul class="list-unstyled">
+					<li>Free For All <strong>[FFA]</strong></li>
+					<li>Team DeathMatch <strong>[TDM]</strong></li>
+					<li>King of the Hill <strong>[KTH]</strong></li>
+					<li>Drop The Bomb <strong>[DTB]</strong></li>
+				</ul>
+			</div>
+		</section>
+
+		<section>
+			{{!-- Full width picture / background image --}}
+			{{!-- <img src="/img/section-banner-test.png" class="img-responsive" /> --}}
+			<img src="/img/banner_tanks.png" class="img-responsive" style="margin: auto;" />
+			<div class="container text-center">
+				<h2 class="page-header">Rankable gaming</h2>
+
+				<p>A system of ladder is included so playing with your friends can become a competitive match.</p>
+
+				<p>
+					You can also gain medals by playing some mod and reaching some score for example. Those medals will
+					be visible by anyone who is looking at your profile.
+				</p>
+			</div>
+		</section>
+
+		<section>
+			{{!-- Full width picture / background image --}}
+			{{!-- <img src="/img/section-banner-test.png" class="img-responsive" /> --}}
+			<div class="container text-center">
+				<h2 class="page-header">Growing Community</h2>
+
+				<div class="col-md-6">
+					{{> infos }}
+				</div>
+				<div class="col-md-6">
+					{{> paypal }}
+				</div>
+			</div>
+		</section>
 	</div>
 </template>

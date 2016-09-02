@@ -1,10 +1,15 @@
+import { Session } from 'meteor/session';
+
 Template.login.events({
 	"submit #login-form": (e) => {
 		e.preventDefault();
 
 		Meteor.loginWithPassword(e.currentTarget.username.value, e.currentTarget.password.value, (error) => {
-			if (error) console.error(error);
-			else console.log("Logged In");
+			if (error) FlashMessages.sendError(error);
+			else {
+				FlashMessages.sendInfo("Logged In");
+				Router.go(Session.get('previousLocationPath') ? Session.get('previousLocationPath') : 'profile');
+			}
 		});
 
 	}

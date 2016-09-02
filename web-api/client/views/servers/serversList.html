@@ -1,0 +1,39 @@
+<template name="serversList">
+
+	<div id="home" class="container text-center">
+		<section id="servers">
+			<h1 class="page-header">Servers List</h1>
+
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Server Name</th>
+						<th>Current Map</th>
+						<th>Uptime</th>
+						<th>Nb Players</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each activeServers}}
+					{{> serverItem}}
+					{{/each}}
+				</tbody>
+			</table>
+		</section>
+
+		{{#unless activeServersCount}}
+		<section id="download">
+			{{> downloads}}
+		</section>
+		{{/unless}}
+	</div>
+</template>
+
+<template name="serverItem">
+	<tr>
+		<th>{{name}}</th>
+		<td>{{map}}</td>
+		<td>{{getUptime}}</td>
+		<td>{{getPlayerCount}}</td>
+	</tr>
+</template>

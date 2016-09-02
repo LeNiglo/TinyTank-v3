@@ -1,0 +1,46 @@
+<template name="footer">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xs-12 col-full">
+				<footer class="text-center">
+					<div class="footer-above container">
+						<div class="row">
+							<div class="col-md-4">
+								<h2 class="page-information">Website</h2>
+								<ul class="list-unstyled">
+									<li><a href="{{ pathFor 'home' }}">Home</a></li>
+									<li><a href="{{ pathFor 'login' }}">Login / Register</a></li>
+									<li><a href="{{ pathFor 'about' }}">About</a></li>
+									<li><a href="{{ pathFor 'downloads' }}">Downloads</a></li>
+								</ul>
+							</div>
+							<div class="col-md-4">
+								<h2 class="page-information">Contact</h2>
+								<ul class="list-unstyled">
+									<li><a href="mailto:lefrantguillaume@gmail.com">Lefrant Guillaume</a></li>
+									<li><a href="mailto:kevin.draym@gmail.com">Kévin Andres</a></li>
+									<li><a href="mailto:adrien.dellamaggiora@gmail.com">Adrien Della Maggiora</a></li>
+								</ul>
+							</div>
+							<div class="col-md-4">
+								<h2 class="page-information">Contributing</h2>
+								<ul class="list-unstyled">
+									<li><a href="{{ pathFor 'about' hash='donate' }}">Donate</a></li>
+									<li><a href="{{ pathFor 'about' hash='graphic' }}">Content</a></li>
+									<li><a href="{{ pathFor 'about' hash='development' }}">Development</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="footer-below container">
+						<div class="row">
+							<div class="col-xs-12">
+								Copyright © TinyTank 2016 
+							</div>
+						</div>
+					</div>
+				</footer>
+			</div>
+		</div>
+	</div>
+</template>

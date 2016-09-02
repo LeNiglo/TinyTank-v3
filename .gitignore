@@ -3,3 +3,5 @@ documentation-web-api/*
 
 build-*/*
 !build-*/.gitkeep
+
+.DS_Store

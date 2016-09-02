@@ -1,4 +1,5 @@
 import { Meteor } from 'meteor/meteor';
+import { check } from 'meteor/check';
 
 /**
 * @summary Get LoggedIn User Profile
@@ -35,18 +36,19 @@ Meteor.method('get_profile', () => {
 * @return {User} user undefined: error, user: requested user
 */
 Meteor.method('get_user_profile', (username) => {
+	check(username, String);
 	return Meteor.users.findOne({$or : [{username: username}, {_id: username}]}, {fields: {
 		'_id':1,
 		'createdAt':1,
 		'updatedAt':1,
 		'lastActive':1,
 		'username':1,
+		'profile.country':1,
 		'stats':1
 	}});
 }, {
 	url: '/api/commons/get_profile/:_username',
 	getArgsFromRequest: (request) => {
-		this.userId = request.userId;
 		return [request.params['_username']];
 	},
 	httpMethod: 'GET'

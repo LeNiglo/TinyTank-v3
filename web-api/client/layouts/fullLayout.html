@@ -1,0 +1,32 @@
+<template name="fullLayout">
+	{{!-- full width banner here.  In the header template, data-offset must have the height of this element --}}
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xs-12 col-full">
+				<div id="leading-image">
+					<img src="/img/logo1.png" id="leading-logo" alt="banner" class="img-responsive" />
+				</div>
+			</div>
+		</div>
+	</div>
+
+	{{> header affix="1" }}
+	<div class="container-fluid">
+		
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					{{> flashMessages}}
+				</div>
+			</div>
+		</div>
+
+		{{!-- the content must be done for will width --}}
+		<div class="row">
+			<div class="col-xs-12">
+				{{> yield }}
+			</div>
+		</div>
+	</div>
+	{{> footer}}
+</template>

@@ -4,7 +4,10 @@ Template.logout.events({
 
 		Meteor.logout((error) => {
 			if (error) console.error(error);
-			else console.log("Logged Out");
-		})
+			else {
+				FlashMessages.sendInfo("Logged Out");
+				// Router.go('login');
+			}
+		});
 	}
 })
