@@ -25,25 +25,30 @@ enum eScreen {
 class Screen
 {
 public:
-	Screen(sf::RenderWindow *_w, sf::View *_v/* Add anything required here (pointers only) such as NetworkManager or AudioManager */)
+	Screen(sf::RenderWindow *_w, sf::View *_v, GameManager *_m)
 	{
 		this->window = _w;
         this->view = _v;
+		this->manager = _m;
 	};
-	virtual bool onEnter() = 0;		// Called when you enter the Screen => use for init
-	virtual void onExit() = 0;		// Called before you exit the Screen => use for clean / delete
-	virtual bool update() = 0;		// Called every cycle of SFML
-	virtual void render() = 0;		// Called during the render of SFML => use this->window->draw();
-	virtual bool eventPoll(const sf::Event&, GameManager*) = 0;
+	virtual bool onEnter() = 0;					// Called when you enter the Screen => use for init
+	virtual void onExit() = 0;					// Called before you exit the Screen => use for clean / delete
+	virtual bool update() = 0;					// Called every cycle of SFML
+	virtual void render(const float&) = 0;		// Called during the render of SFML => use this->window->draw();
+	virtual bool eventPoll(const sf::Event&) = 0;
 	void setRenderWindow(sf::RenderWindow *_w) {
 		this->window = _w;
 	}
 	void setView(sf::View *_v) {
 		this->view = _v;
 	}
+	void setManager(GameManager *_m) {
+		this->manager = _m;
+	}
 protected:
 	sf::RenderWindow		*window;
 	sf::View				*view;
+	GameManager				*manager;
 };
 
 # include "GameManager.hpp"

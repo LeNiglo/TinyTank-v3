@@ -12,6 +12,9 @@
 # include <iostream>
 # include <vector>
 
+# include <cmath>
 # include <cstdlib>
+
+# include "Tools/MathsHelper.hpp"
 
 #endif /* _CONFIG_H_ */

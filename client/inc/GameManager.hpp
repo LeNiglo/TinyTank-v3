@@ -13,9 +13,9 @@ public:
 	~GameManager();
 	bool						init();
 	int							loop();
+	void                        setCurrentScreen(const eScreen&);
 private:
 	bool						eventPoll();
-    void                        setCurrentScreen(const eScreen&);
 private:
 	sf::View					*view;
 	sf::RenderWindow			*window;

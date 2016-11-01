@@ -15,12 +15,12 @@ bool LobbyScreen::update()
     return true;
 }
 
-void LobbyScreen::render()
+void LobbyScreen::render(const float &_fps)
 {
 
 }
 
-bool LobbyScreen::eventPoll(const sf::Event &event, GameManager *manager)
+bool LobbyScreen::eventPoll(const sf::Event &event)
 {
     return true;
 }

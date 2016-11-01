@@ -15,12 +15,12 @@ bool MenuScreen::update()
 	return true;
 }
 
-void MenuScreen::render()
+void MenuScreen::render(const float &_fps)
 {
 
 }
 
-bool MenuScreen::eventPoll(const sf::Event &event, GameManager *manager)
+bool MenuScreen::eventPoll(const sf::Event &event)
 {
 	return true;
 }
