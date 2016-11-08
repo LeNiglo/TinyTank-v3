@@ -52,6 +52,18 @@ if (SFML_FOUND)
 	target_link_libraries(${PROJECT_NAME} ${SFML_LIBRARIES})
 endif ()
 
+find_package(Protobuf REQUIRED)
+if (PROTOBUF_FOUND)
+	include_directories(${PROTOBUF_INCLUDE_DIRS})
+
+#	Add compiled .proto classes
+# include_directories(${CMAKE_CURRENT_BINARY_DIR})
+# protobuf_generate_cpp(PROTO_SRCS PROTO_HDRS foo.proto)
+# add_executable(${PROJECT_NAME} bar.cc ${PROTO_SRCS} ${PROTO_HDRS})
+
+	target_link_libraries(${PROJECT_NAME}  ${PROTOBUF_LIBRARIES})
+endif ()
+
 # BOOST
 # find_package(Boost 1.34.0 REQUIRED system filesystem)
 # if (Boost_FOUND)

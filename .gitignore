@@ -1,7 +1,4 @@
-documentation-web-api/*
-!documentation-web-api/.gitkeep
-
-build-*/*
-!build-*/.gitkeep
+/documentation-web-api/*
+!/documentation-web-api/.gitkeep
 
 .DS_Store
